@@ -1,0 +1,75 @@
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+	background-color:#eaeaea;  
+}
+
+.container {
+	margin-top: 10px;
+	position: absolute;
+	width: 740px;
+	left: 50%;
+	margin-left: -370px;
+	color: #eaeaea;
+	background-color:#323232;
+}
+
+
+.header {
+	background-image: url("./images/mouse.jpg");
+	background-repeat: no-repeat;
+	height:157px;
+	padding-left:300px;
+	padding-top:50px;
+	width:440px;
+	color: #eaeaea;
+	border-bottom:1px solid #eaeaea;
+}
+
+.header-title {
+	font-size:3.3em;
+	border-top:2px solid #eaeaea;
+}
+
+.header-title-two {
+	font-size:2.1em;
+	padding-bottom:3px;
+	border-bottom:1px solid #eaeaea;
+}
+
+
+
+
+.content {
+	padding:20px;
+	padding-left:40px;
+
+}
+
+.canvas {
+	background-color: #999;
+}
+
+
+.footer {
+	height: 25px;
+	text-align:right;
+	padding-right:10px;
+	padding-top:3px;
+	border-top:1px solid #eaeaea;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
