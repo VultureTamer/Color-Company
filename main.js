@@ -129,7 +129,7 @@
 	// end setup
 	
 	
-	var canoffset = $(canvas).offset();
+	var canoffset = $(ctx.canvas).offset();
 
 function initCanvas(){
     
