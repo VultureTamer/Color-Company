@@ -128,6 +128,8 @@
 	player.start(player.X,player.Y,player.C);
 	// end setup
 	
+	
+	var canoffset = $(canvas).offset();
 
 function initCanvas(){
     
@@ -144,12 +146,12 @@ function initCanvas(){
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
 
-			player.X = event.pageX -431;
-			player.Y = event.pageY -340;
+			player.X = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
+			player.Y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
 			
 		ctx.canvas.addEventListener('mousemove', function(event) {
-			player.X = event.pageX -431;
-			player.Y = event.pageY -340;
+			player.X = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
+			player.Y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
 		
 			/* player.X = event.layerX;																								
 			player.Y = event.layerY; */
