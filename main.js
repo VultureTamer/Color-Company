@@ -144,12 +144,12 @@ function initCanvas(){
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
 
-			player.X = event.pageX;
-			player.Y = event.pageY;
+			player.X = event.pageX -431;
+			player.Y = event.pageY -340;
 			
 		ctx.canvas.addEventListener('mousemove', function(event) {
-			player.X = event.pageX;
-			player.Y = event.pageY;
+			player.X = event.pageX -431;
+			player.Y = event.pageY -340;
 		
 			/* player.X = event.layerX;																								
 			player.Y = event.layerY; */
