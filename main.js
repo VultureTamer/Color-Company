@@ -1,23 +1,26 @@
-
-
-function initCanvas(){
-    //global stuff
+	var pixelNumber = 0;
+	var pixelPerClick = 1;
+	var pixelPerTick = 1;
+	var pixelSize = 2;
+	var enemySize = 2.5;
+	
+	
+		//global stuff
 	var ctx = document.getElementById('myCanvas').getContext('2d');
     var cW = ctx.canvas.width, cH = ctx.canvas.height;
 	ctx.fillStyle = "#eaeaea";
 	ctx.fillRect(0,0,cW,cH);
 	var RGBAverage;
+
 	//end global stuff
 	
-	
-	
-	//sprayObj
+		//sprayObj
 	function sprayObj(x,y,d,s,c) {
 		this.X = x;
 		this.Y = y;
-		this.D = d;
-		this.S = s;
-		this.C = c;
+		this.D = d;				//density
+		this.S = s;				//spread
+		this.C = c;				//color
 		this.lost = 0;
 		this.start = function(X,Y,C) {
 			ctx.fillStyle = C;
@@ -38,8 +41,27 @@ function initCanvas(){
 			};
 		};
 		this.sprayColor = function() {
-			if( this.checkColor() ) {   							
-				for (var i = Math.floor(this.D); i--; ) {
+			if( this.checkColor() ) {
+				if (this == player) { 
+					if (pixelNumber > 0) {
+						player.S = Math.floor(Math.min(200,player.S + 0.002)*10000)/10000;				
+						player.D = Math.floor(Math.min(player.S * 0.75,player.D + 0.001)*10000)/10000;
+						document.getElementById('Spread').innerHTML = player.S;
+						document.getElementById('Density').innerHTML = player.D;
+						pixelNumber--;
+						for (var i = Math.floor(this.D); i--; ) {
+						var angle = Math.random()*Math.PI*2;
+						var radius = Math.random()*this.S;
+						ctx.globalAlpha = Math.random();
+						ctx.fillStyle = this.C;
+						ctx.fillRect(
+						Math.floor(this.X + radius * Math.cos(angle)),
+						Math.floor(this.Y + radius * Math.sin(angle)), 
+						pixelSize, pixelSize);
+						};
+					};
+				} else {
+					for (var i = Math.floor(this.D); i--; ) {
 					var angle = Math.random()*Math.PI*2;
 					var radius = Math.random()*this.S;
 					ctx.globalAlpha = Math.random();
@@ -47,8 +69,10 @@ function initCanvas(){
 					ctx.fillRect(
 					Math.floor(this.X + radius * Math.cos(angle)),
 					Math.floor(this.Y + radius * Math.sin(angle)), 
-					2, 2);
+					enemySize, enemySize);
+					};
 				};
+
 			};
 		};
 		this.move = function() {
@@ -65,7 +89,7 @@ function initCanvas(){
 					this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
 				};
 				this.lost = 0;
-			} else {
+			} else {												//als ge ni op u kleur zit, blijf zoeken tot ge te lang gezocht hebt (10)
 				if (this.lost > 10) {
 					this.S = 5;
 					this.X = Math.floor(Math.random()*598 + 1);
@@ -92,16 +116,27 @@ function initCanvas(){
 	
 	// end sprayObj
 	
-	// setup
-	var enemy1 = new sprayObj(333,333,50,5,'rgb(0,255,255)');
+	
+		// setup
+	var enemy1 = new sprayObj(333,333,50,5,'rgb(0,255,255)');						//(X,Y,Density,spread,color)
 	var enemy2 = new sprayObj(590,390,50,5,'rgb(0,0,255)');							// temporary stuff
 	var enemy3 = new sprayObj(490,60,50,5,'rgb(0,255,0)');
-	var player = new sprayObj(30,30,50,5,'rgb(255,0,0)');
+	var player = new sprayObj(30,30,1,5,'rgb(255,0,0)');
 	enemy1.start(enemy1.X,enemy1.Y,enemy1.C);
 	enemy2.start(enemy2.X,enemy2.Y,enemy2.C);
 	enemy3.start(enemy3.X,enemy3.Y,enemy3.C);
 	player.start(player.X,player.Y,player.C);
 	// end setup
+	
+
+function initCanvas(){
+    
+
+	
+	
+
+	
+
 	
 	
 	//click logic
@@ -119,8 +154,6 @@ function initCanvas(){
 		
 		function draw() {
 			player.sprayColor();
-			player.S = Math.min(200,player.S + 0.02);				// temporary stuff      checkColor moet nog uit sprayColor komen want nu groeit het permanent
-			player.D = player.S * 0.4;
 		};
 		
 		ctx.canvas.addEventListener('mouseleave', function(event) {
@@ -143,11 +176,13 @@ function initCanvas(){
 		enemy1.S = enemy1.S + 0.01;
 		enemy2.S = enemy2.S + 0.01;		// temporary stuff
 		enemy3.S = enemy3.S + 0.01;
+		enemySize = enemySize + 0.00001;
 		RGBAverage = getAverageRGB(ctx);
 		document.getElementById('bodycolor').style.backgroundColor = 'rgb('+RGBAverage.r+','+RGBAverage.g+','+RGBAverage.b+')';
         ctx.restore();
     };
     var animateInterval = setInterval(animate, 10);
+
 	
 	//endgameloop
 
@@ -197,8 +232,70 @@ function initCanvas(){
 	// end fancy stuff
 	
 }; // end initCanvas
+	
+	
+	
+	
+	var pixelInterval = setInterval(getPixelTick, 100);
+	
+	function getPixelTick() {
+		pixelNumber = pixelNumber + pixelPerTick;
+		document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+	};
 
-
+	function getPixelClick(pixelPerClick) {
+		pixelNumber = pixelNumber + pixelPerClick;
+		document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+	};
+	
+	function upgradePixelTick() {
+		if (pixelNumber > 1000 && pixelPerTick < 0.5*pixelPerClick) {
+			pixelPerTick = pixelPerTick + 1;
+			document.getElementById('pixelpertick').innerHTML = pixelPerTick;
+			pixelNumber = pixelNumber - 1000;
+			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		};
+	};
+	
+	function upgradePixelClick() {
+		if (pixelNumber > 100 && pixelPerClick < player.S) {
+			pixelPerClick = pixelPerClick + 1;
+			document.getElementById('pixelperclick').innerHTML = pixelPerClick;
+			pixelNumber = pixelNumber - 100;
+			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		};
+	};
+	
+	function increaseSpread() {
+		if (pixelNumber > 10 && player.S < 200) {
+			player.S = Math.floor((player.S + 0.2)*10000)/10000;
+			document.getElementById('Spread').innerHTML = player.S;
+			pixelNumber = pixelNumber - 10;
+			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		};
+	};
+	
+	function increaseDensity() {
+		if (pixelNumber > 20 && player.D < 0.75*player.S) {
+			player.D = Math.floor((player.D + 0.5)*10000)/10000;
+			document.getElementById('Density').innerHTML = player.D;
+			pixelNumber = pixelNumber - 20;
+			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		};
+	};
+	
+	function increasePixelSize() {
+		if (pixelNumber > 5000 && pixelSize < 0.5*pixelPerClick) {
+			pixelSize = pixelSize + 1;
+			pixelNumber = pixelNumber - 5000;
+			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		};
+	};
+	
+	
+	
+	
+	
 //wait till page ready
 window.addEventListener('load', function(event) {
     initCanvas();

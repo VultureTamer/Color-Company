@@ -13,10 +13,19 @@
 		
 		<div class="header">
 			<span class="header-title">Clicker Company</span><br />
-			<span class="header-title-two">Start clicking today!<span>
+			<span class="header-title-two">Start clicking today!</span>
+			
 		</div>
+		<button onClick="getPixelClick(pixelPerClick)" style="margin:10px;width:100px;heigth:180px">get more pixels!</button> 
+		<button onClick="upgradePixelClick()" style="margin:10px;width:100px;heigth:180px">upgrade clicks! </br> cost: 100</button>
+		<button onClick="upgradePixelTick()" style="margin:10px;width:100px;heigth:180px">upgrade ticks! </br> cost: 1000</button>
+		<button onClick="increaseSpread()" style="margin:10px;width:100px;heigth:180px">increase spread </br> cost: 10</button>
+		<button onClick="increaseDensity()" style="margin:10px;width:100px;heigth:180px">increase density </br> cost: 20</button>
 
-
+		
+		</br>
+		You got <span id="pixelsnumber">0</span> pixels! </br>
+		<span id="pixelperclick">1</span> pixel/click || <span id="pixelpertick">1</span> pixel/tick || <span id="Spread">5</span> spread || <span id="Density">1</span> Density
 
 		<div class="content">
 			<canvas id="myCanvas" width="600" height="400"
@@ -24,7 +33,7 @@
 			</canvas>
 		</div>
 		
-		<div id="averagediv" style="width:50px;height:10px;border:1px solid #000;background:#fff"></div>
+		<button onClick="increasePixelSize()" style="margin:10px;width:100px;heigth:180px">increase pixel size </br> cost: 5000</button>
 		
 		<div class="footer">
 			Design by Kay Van Wynendaele
