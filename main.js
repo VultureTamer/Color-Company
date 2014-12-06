@@ -141,13 +141,20 @@ function initCanvas(){
 	
 	//click logic
 	ctx.canvas.addEventListener('mouseenter', function(event) {
-		var drawInterval = setInterval(draw, 20);	
-		player.X = event.layerX;																								
-		player.Y = event.layerY;															//does not work in IE
+		var drawInterval = setInterval(draw, 20);
+		
+		var rect = canvas.getBoundingClientRect();
+        
+			player.X = event.clientX - rect.left;
+			player.Y = event.clientY - rect.top;
+  														//does not work in IE
 		
 		ctx.canvas.addEventListener('mousemove', function(event) {
-			player.X = event.layerX;																								
-			player.Y = event.layerY;
+			player.X = event.clientX - rect.left;
+			player.Y = event.clientY - rect.top;
+		
+			/* player.X = event.layerX;																								
+			player.Y = event.layerY; */
 			
 		});
 	
