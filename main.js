@@ -143,13 +143,30 @@ function initCanvas(){
 	ctx.canvas.addEventListener('mouseenter', function(event) {
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
-			player.X = event.layerX;
-			player.Y = event.layerY;
-  														//does not work in IE
-		
+			var mx;
+			var my;
+			if ( event.layerX ||  event.layerX == 0) { // Firefox
+					mx = event.layerX;
+					my = event.layerY;
+				} else if (event.offsetX || event.offsetX == 0) { // Opera
+					mx = event.offsetX;
+					my = event.offsetY;
+				};
+			player.X = mx;
+			player.Y = my;
+			
 		ctx.canvas.addEventListener('mousemove', function(event) {
-			player.X = event.layerX;
-			player.Y = event.layerY;
+			var mx;
+			var my;
+			if ( event.layerX ||  event.layerX == 0) { // Firefox
+					mx = event.layerX;
+					my = event.layerY;
+				} else if (event.offsetX || event.offsetX == 0) { // Opera
+					mx = event.offsetX;
+					my = event.offsetY;
+				};
+			player.X = mx;
+			player.Y = my;
 		
 			/* player.X = event.layerX;																								
 			player.Y = event.layerY; */
