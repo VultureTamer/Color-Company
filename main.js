@@ -1,6 +1,6 @@
 	var pixelNumber = 0;
 	var pixelPerClick = 1;
-	var pixelPerTick = 100;
+	var pixelPerTick = 1;
 	var pixelSize = 2;
 	var enemySize = 2.5;
 	var enter = false;
