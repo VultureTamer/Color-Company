@@ -208,12 +208,20 @@ function initCanvas(){
 		if (RGBAverage.g < 1 && RGBAverage.b < 1) {
 			ctx.font="100px Georgia";
 			ctx.fillStyle="#eaeaea";
-			ctx.fillText("YOU WON",75,200);
+			ctx.fillText("YOU WON",50,200);
 		};
-		if (RGBAverage.r < 20) {
-			ctx.font="100px Georgia";
-			ctx.fillStyle="#eaeaea";
-			ctx.fillText("YOU LOST",75,200);
+		if (RGBAverage.r < 50) {
+			var imageData = ctx.getImageData(30,30,1,1);
+			var r = imageData.data[0];
+			if (r<5) {
+				ctx.font="100px Georgia";
+				ctx.fillStyle="#eaeaea";
+				ctx.fillText("YOU LOST",50,200);
+			} else if (RGBAverage.r < 10) {
+				ctx.font="100px Georgia";
+				ctx.fillStyle="#eaeaea";
+				ctx.fillText("YOU LOST",50,200);
+			};
 		}
 		document.getElementById('bodycolor').style.backgroundColor = 'rgb('+RGBAverage.r+','+RGBAverage.g+','+RGBAverage.b+')';
         ctx.restore();
@@ -223,7 +231,8 @@ function initCanvas(){
 	
 	//endgameloop
 
-	
+				var imageData = ctx.getImageData(this.X,this.Y,1,1);
+			var r = imageData.data[0];
 
 	
 	//fancy stuff!
