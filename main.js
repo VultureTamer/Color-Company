@@ -203,7 +203,7 @@ function initCanvas(){
 		enemy1.S = enemy1.S + 0.01;
 		enemy2.S = enemy2.S + 0.01;		// temporary stuff
 		enemy3.S = enemy3.S + 0.01;
-		enemySize = enemySize + 0.00005;
+		enemySize = enemySize + 0.00025;
 		RGBAverage = getAverageRGB(ctx);
 		document.getElementById('bodycolor').style.backgroundColor = 'rgb('+RGBAverage.r+','+RGBAverage.g+','+RGBAverage.b+')';
         ctx.restore();
