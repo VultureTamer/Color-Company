@@ -290,6 +290,7 @@ function initCanvas(){
 	function getPixelClick(pixelPerClick) {
 		pixelNumber = pixelNumber + pixelPerClick;
 		document.getElementById('pixelsnumber').innerHTML = pixelNumber;
+		document.getElementById("focus").focus();
 	};
 	
 	function upgradePixelTick() {
