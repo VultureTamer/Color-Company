@@ -1,6 +1,6 @@
 	var pixelNumber = 0;
 	var pixelPerClick = 1;
-	var pixelPerTick = 1;
+	var pixelPerTick = 100;
 	var pixelSize = 2;
 	var enemySize = 2.5;
 	var enter = false;
@@ -205,6 +205,16 @@ function initCanvas(){
 		enemy3.S = enemy3.S + 0.01;
 		enemySize = enemySize + 0.00025;
 		RGBAverage = getAverageRGB(ctx);
+		if (RGBAverage.g < 1 && RGBAverage.b < 1) {
+			ctx.font="100px Georgia";
+			ctx.fillStyle="#eaeaea";
+			ctx.fillText("YOU WON",75,200);
+		};
+		if (RGBAverage.r < 20) {
+			ctx.font="100px Georgia";
+			ctx.fillStyle="#eaeaea";
+			ctx.fillText("YOU LOST",75,200);
+		}
 		document.getElementById('bodycolor').style.backgroundColor = 'rgb('+RGBAverage.r+','+RGBAverage.g+','+RGBAverage.b+')';
         ctx.restore();
     };
