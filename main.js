@@ -44,7 +44,7 @@
 		this.sprayColor = function() {
 			if( this.checkColor() ) {
 				if (this == player) { 
-					if (pixelNumber > 0) {
+					if (pixelNumber > Math.floor(pixelSize*pixelSize/2)) {
 						player.S = Math.floor(Math.min(200,player.S + 0.002)*10000)/10000;				
 						player.D = Math.floor(Math.min(player.S * 0.75,player.D + 0.001)*10000)/10000;
 						document.getElementById('Spread').innerHTML = player.S;
