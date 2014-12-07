@@ -312,7 +312,7 @@ function initCanvas(){
 	};
 	
 	function increasePixelSize() {
-		if (pixelNumber > 5000 && pixelSize < 0.5*pixelPerClick) {
+		if (pixelNumber > 5000 && pixelSize < 0.1*pixelPerClick) {
 			pixelSize = pixelSize + 1;
 			pixelNumber = pixelNumber - 5000;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
