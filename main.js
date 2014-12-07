@@ -231,8 +231,6 @@ function initCanvas(){
 	
 	//endgameloop
 
-				var imageData = ctx.getImageData(this.X,this.Y,1,1);
-			var r = imageData.data[0];
 
 	
 	//fancy stuff!
