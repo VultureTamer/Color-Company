@@ -22,14 +22,14 @@
 		
 		Make everything nice and red by hovering your mouse over red pixels </br>
 		this will cost a lot of pixels so make sure you get your pixel economy up and running ASAP</br>
-
+		the Bigger pixels upgrade is great BUT it costs alot of pixels while spraying so watch out!</br>
 		
 		<button onClick="getPixelClick(pixelPerClick)" style="margin:10px;width:100px;heigth:180px">get more pixels!</button> 
 		<button id="focus" onClick="upgradePixelClick()"  style="margin:10px;width:100px;heigth:180px">upgrade clicks! </br> cost: 100</button>
 		<button onClick="upgradePixelTick()"  style="margin:10px;width:100px;heigth:180px">upgrade ticks! </br> cost: 1000</button>
 		<button onClick="increaseSpread()"  style="margin:10px;width:100px;heigth:180px">increase spread </br> cost: 50</button>
 		<button onClick="increaseDensity()"  style="margin:10px;width:100px;heigth:180px">increase density </br> cost: 80</button>
-
+		<button onClick="increasePixelSize()" onKeyPress="return disableEnterKey(event)" style="margin:0px;width:100px;heigth:180px">increase pixel size </br> cost: 5000</button> 
 		
 		</br>
 		You got <span id="pixelsnumber">0</span> pixels! </br>
@@ -41,7 +41,7 @@
 			</canvas>
 		</div>
 
-		<button onClick="increasePixelSize()" onKeyPress="return disableEnterKey(event)" style="margin:10px;width:100px;heigth:180px">increase pixel size </br> cost: 5000</button> bigger pixels BUT higher pixel cost per spray! (watch out)
+		
 		<div class="footer">
 			Design by Kay Van Wynendaele
 		</div>
