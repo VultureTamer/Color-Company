@@ -5,6 +5,9 @@
 	<title>Clicker Company</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
 	<link rel="stylesheet" href="main.css" />
+	
+
+	
 </head>
 
 <body id="bodycolor">
@@ -22,10 +25,10 @@
 
 		
 		<button onClick="getPixelClick(pixelPerClick)" style="margin:10px;width:100px;heigth:180px">get more pixels!</button> 
-		<button onClick="upgradePixelClick()" style="margin:10px;width:100px;heigth:180px">upgrade clicks! </br> cost: 100</button>
-		<button onClick="upgradePixelTick()" style="margin:10px;width:100px;heigth:180px">upgrade ticks! </br> cost: 1000</button>
-		<button onClick="increaseSpread()" style="margin:10px;width:100px;heigth:180px">increase spread </br> cost: 50</button>
-		<button onClick="increaseDensity()" style="margin:10px;width:100px;heigth:180px">increase density </br> cost: 80</button>
+		<button id="focus" onClick="upgradePixelClick()"  style="margin:10px;width:100px;heigth:180px">upgrade clicks! </br> cost: 100</button>
+		<button onClick="upgradePixelTick()"  style="margin:10px;width:100px;heigth:180px">upgrade ticks! </br> cost: 1000</button>
+		<button onClick="increaseSpread()"  style="margin:10px;width:100px;heigth:180px">increase spread </br> cost: 50</button>
+		<button onClick="increaseDensity()"  style="margin:10px;width:100px;heigth:180px">increase density </br> cost: 80</button>
 
 		
 		</br>
@@ -38,8 +41,7 @@
 			</canvas>
 		</div>
 
-		<button onClick="increasePixelSize()" style="margin:10px;width:100px;heigth:180px">increase pixel size </br> cost: 5000</button> bigger pixels BUT higher pixel cost per spray! (watch out)
-		
+		<button onClick="increasePixelSize()" onKeyPress="return disableEnterKey(event)" style="margin:10px;width:100px;heigth:180px">increase pixel size </br> cost: 5000</button> bigger pixels BUT higher pixel cost per spray! (watch out)
 		<div class="footer">
 			Design by Kay Van Wynendaele
 		</div>
@@ -50,5 +52,8 @@
  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script type="text/javascript" src="main.js"></script>
+
+
+
 </body>
 </html>
