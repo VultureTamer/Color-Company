@@ -17,12 +17,14 @@
 	//end global stuff
 	
 		//sprayObj
-	function sprayObj(x,y,d,s,c) {
+	function sprayObj(x,y,d,s,c,xgoal,ygoal) {
 		this.X = x;
 		this.Y = y;
 		this.D = d;				//density
 		this.S = s;				//spread
 		this.C = c;				//color
+		this.XGoal = xgoal;
+		this.YGoal = ygoal;
 		this.lost = 0;
 		this.start = function(X,Y,C) {
 			ctx.fillStyle = C;
@@ -50,7 +52,7 @@
 						player.D = Math.floor(Math.min(player.S * 0.75,player.D + 0.001)*10000)/10000;
 						document.getElementById('Spread').innerHTML = player.S;
 						document.getElementById('Density').innerHTML = player.D;
-						pixelNumber = pixelNumber - Math.floor(pixelSize*pixelSize/4);
+						pixelNumber = pixelNumber - Math.floor(pixelSize*pixelSize/2);
 						for (var i = Math.floor(this.D); i--; ) {
 						var angle = Math.random()*Math.PI*2;
 						var radius = Math.random()*this.S;
@@ -81,13 +83,13 @@
 
 			if(this.checkColor()) {
 				if ( !enter ) {
-					if (this.X> 50) {
+					if (this.X> this.XGoal) {
 						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1-0.02));
 					} else {
 						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1+0.02));					// temporary stuff
 					};
 					
-					if (this.Y>50) {
+					if (this.Y>this.YGoal) {
 						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1-0.02));
 					} else {
 						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
@@ -112,13 +114,13 @@
 					this.Y = Math.floor(Math.random()*398 + 1);
 					this.lost = 0;
 				} else {
-					if (this.X> 50) {
+					if (this.X> this.XGoal) {
 						this.X = Math.min(595,this.X + Math.floor(Math.random()*7-3-0.02));
 					} else {
 						this.X = Math.max(5,this.X + Math.floor(Math.random()*7-3+0.02));					// temporary stuff
 					};
 					
-					if (this.Y>50) {
+					if (this.Y> this.YGoal) {
 						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*7-3-0.02));
 					} else {
 						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*7-3+0.02));
@@ -136,10 +138,10 @@
 	
 	
 		// setup
-	var enemy1 = new sprayObj(333,333,50,5,'rgb(0,255,255)');						//(X,Y,Density,spread,color)
-	var enemy2 = new sprayObj(590,390,50,5,'rgb(0,0,255)');							// temporary stuff
-	var enemy3 = new sprayObj(490,60,50,5,'rgb(0,255,0)');
-	var player = new sprayObj(30,30,1,5,'rgb(255,0,0)');
+	var enemy1 = new sprayObj(333,333,50,5,'rgb(0,255,255)',50,150);						//(X,Y,Density,spread,color)
+	var enemy2 = new sprayObj(590,390,50,5,'rgb(0,0,255)',350,250);							// temporary stuff
+	var enemy3 = new sprayObj(490,60,50,5,'rgb(0,255,0)',150,50);
+	var player = new sprayObj(30,30,1,5,'rgb(255,0,0)',30,30);
 	enemy1.start(enemy1.X,enemy1.Y,enemy1.C);
 	enemy2.start(enemy2.X,enemy2.Y,enemy2.C);
 	enemy3.start(enemy3.X,enemy3.Y,enemy3.C);
