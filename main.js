@@ -320,10 +320,10 @@ function initCanvas(){
 	};
 	
 	function increaseDensity() {
-		if (pixelNumber > 20 && player.D < 0.75*player.S) {
-			player.D = Math.floor((player.D + 0.5)*10000)/10000;
+		if (pixelNumber > 80 && player.D < 0.75*player.S) {
+			player.D = Math.floor((player.D + 2)*10000)/10000;
 			document.getElementById('Density').innerHTML = player.D;
-			pixelNumber = pixelNumber - 20;
+			pixelNumber = pixelNumber - 80;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
 		};
 	};
