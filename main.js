@@ -214,7 +214,7 @@ function initCanvas(){
 			ctx.fillStyle="#eaeaea";
 			ctx.fillText("YOU WON",50,200);
 		};
-		if (RGBAverage.r < 50) {
+		if (RGBAverage.r < 30) {
 			var imageData = ctx.getImageData(30,30,1,1);
 			var r = imageData.data[0];
 			if (r<5) {
