@@ -4,6 +4,7 @@
 	var pixelSize = 2;
 	var enemySize = 2.5;
 	var enter = false;
+	var canoffset;
 	
 	
 		//global stuff
@@ -160,7 +161,7 @@ function initCanvas(){
 	
 	//click logic
 	ctx.canvas.addEventListener('mouseenter', function(event) {
-		var canoffset = $(ctx.canvas).offset();
+		
 		enter = true;
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
@@ -194,6 +195,7 @@ function initCanvas(){
 	
 	function animate(){
         ctx.save();
+		canoffset = $(ctx.canvas).offset();
 		enemy1.sprayColor();
 		enemy2.sprayColor();
 		enemy3.sprayColor();
@@ -333,6 +335,7 @@ function initCanvas(){
 		if (pixelNumber > 5000 && pixelSize < 0.1*pixelPerClick) {
 			pixelSize = pixelSize + 1;
 			pixelNumber = pixelNumber - 5000;
+			document.getElementById('pixelSize').innerHTML = pixelSize;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
 		};
 	};
