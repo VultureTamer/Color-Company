@@ -129,7 +129,7 @@
 	// end setup
 	
 	
-	var canoffset = $(ctx.canvas).offset();
+
 
 function initCanvas(){
     
@@ -143,6 +143,7 @@ function initCanvas(){
 	
 	//click logic
 	ctx.canvas.addEventListener('mouseenter', function(event) {
+		var canoffset = $(ctx.canvas).offset();
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
 
@@ -274,10 +275,10 @@ function initCanvas(){
 	};
 	
 	function increaseSpread() {
-		if (pixelNumber > 10 && player.S < 200) {
-			player.S = Math.floor((player.S + 0.2)*10000)/10000;
+		if (pixelNumber > 50 && player.S < 200) {
+			player.S = Math.floor((player.S + 1)*10000)/10000;
 			document.getElementById('Spread').innerHTML = player.S;
-			pixelNumber = pixelNumber - 10;
+			pixelNumber = pixelNumber - 50;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
 		};
 	};
