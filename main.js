@@ -316,10 +316,10 @@ function initCanvas(){
 	};
 	
 	function increaseSpread() {
-		if (pixelNumber > 50 && player.S < 200) {
-			player.S = Math.floor((player.S + 1)*10000)/10000;
+		if (pixelNumber > 100 && player.S < 200) {
+			player.S = Math.floor((player.S + 2)*10000)/10000;
 			document.getElementById('Spread').innerHTML = player.S;
-			pixelNumber = pixelNumber - 50;
+			pixelNumber = pixelNumber - 100;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
 		};
 	};
