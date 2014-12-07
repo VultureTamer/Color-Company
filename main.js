@@ -49,7 +49,7 @@
 						player.D = Math.floor(Math.min(player.S * 0.75,player.D + 0.001)*10000)/10000;
 						document.getElementById('Spread').innerHTML = player.S;
 						document.getElementById('Density').innerHTML = player.D;
-						pixelNumber--;
+						pixelNumber = Math.floor(pixelNumber - pixelSize/2);
 						for (var i = Math.floor(this.D); i--; ) {
 						var angle = Math.random()*Math.PI*2;
 						var radius = Math.random()*this.S;
