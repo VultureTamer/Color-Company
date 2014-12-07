@@ -3,6 +3,7 @@
 	var pixelPerTick = 1;
 	var pixelSize = 2;
 	var enemySize = 2.5;
+	var enter = false;
 	
 	
 		//global stuff
@@ -76,18 +77,32 @@
 			};
 		};
 		this.move = function() {
+
 			if(this.checkColor()) {
-				if (this.X> 50) {
-					this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1-0.02));
-				} else {
-					this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1+0.02));					// temporary stuff
-				};
-				
-				if (this.Y>50) {
-					this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1-0.02));
-				} else {
-					this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
-				};
+				if ( !enter ) {
+					if (this.X> 50) {
+						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1-0.02));
+					} else {
+						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1+0.02));					// temporary stuff
+					};
+					
+					if (this.Y>50) {
+						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1-0.02));
+					} else {
+						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
+					};
+				} else {							// als ge zelf in het canvas zijt! valt hij u aan
+					if (player.X - this.X >= 0) {
+						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1+0.5));    //(-0,5 tot 2,5)		(-1 tot 2)
+					} else {
+						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1-0.5));    //(-1,5 tot 1,5)		(-2 tot 1)
+					};
+					if (player.Y - this.Y >= 0) {
+						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1+0.5));    //(-0,5 tot 2,5)		(-1 tot 2)
+					} else {
+						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1-0.5));    //(-1,5 tot 1,5)		(-2 tot 1)
+					};
+				};	
 				this.lost = 0;
 			} else {												//als ge ni op u kleur zit, blijf zoeken tot ge te lang gezocht hebt (10)
 				if (this.lost > 10) {
@@ -111,6 +126,8 @@
 				};
 				
 			};
+
+			
 		};
 	};
 	
@@ -144,6 +161,7 @@ function initCanvas(){
 	//click logic
 	ctx.canvas.addEventListener('mouseenter', function(event) {
 		var canoffset = $(ctx.canvas).offset();
+		enter = true;
 		var drawInterval = setInterval(draw, 20);
 			console.log("mouseenter");
 
@@ -165,6 +183,7 @@ function initCanvas(){
 		};
 		
 		ctx.canvas.addEventListener('mouseleave', function(event) {
+			enter = false;
 			clearInterval(drawInterval);
 		});
 	});
