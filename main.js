@@ -104,23 +104,23 @@
 					};
 				};	
 				this.lost = 0;
-			} else {												//als ge ni op u kleur zit, blijf zoeken tot ge te lang gezocht hebt (10)
-				if (this.lost > 10) {
+			} else {												//als ge ni op u kleur zit, blijf zoeken tot ge te lang gezocht hebt (20)
+				if (this.lost > 20) {
 					this.S = 5;
 					this.X = Math.floor(Math.random()*598 + 1);
 					this.Y = Math.floor(Math.random()*398 + 1);
 					this.lost = 0;
 				} else {
 					if (this.X> 50) {
-						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1-0.02));
+						this.X = Math.min(595,this.X + Math.floor(Math.random()*7-3-0.02));
 					} else {
-						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1+0.02));					// temporary stuff
+						this.X = Math.max(5,this.X + Math.floor(Math.random()*7-3+0.02));					// temporary stuff
 					};
 					
 					if (this.Y>50) {
-						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1-0.02));
+						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*7-3-0.02));
 					} else {
-						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
+						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*7-3+0.02));
 					};
 					this.lost = this.lost + 1;					
 				};
