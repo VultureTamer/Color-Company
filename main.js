@@ -84,26 +84,26 @@
 			if(this.checkColor()) {
 				if ( !enter ) {
 					if (this.X> this.XGoal) {
-						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1-0.02));
+						this.X = Math.min(595,this.X + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)-0.02*enemySize/3));
 					} else {
-						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1+0.02));					// temporary stuff
+						this.X = Math.max(5,this.X + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)+0.02*enemySize/3));					// temporary stuff
 					};
 					
 					if (this.Y>this.YGoal) {
-						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1-0.02));
+						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)-0.02*enemySize/3));
 					} else {
-						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1+0.02));
+						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)+0.02*enemySize/3));
 					};
 				} else {							// als ge zelf in het canvas zijt! valt hij u aan
 					if (player.X - this.X >= 0) {
-						this.X = Math.min(595,this.X + Math.floor(Math.random()*3-1+0.02));    //(-0,5 tot 2,5)		(-1 tot 2)
+						this.X = Math.min(595,this.X + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)+0.02*enemySize/3));    //(-0,5 tot 2,5)		(-1 tot 2)
 					} else {
-						this.X = Math.max(5,this.X + Math.floor(Math.random()*3-1-0.02));    //(-1,5 tot 1,5)		(-2 tot 1)
+						this.X = Math.max(5,this.X + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)-0.02*enemySize/3));    //(-1,5 tot 1,5)		(-2 tot 1)
 					};
 					if (player.Y - this.Y >= 0) {
-						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3-1+0.02));    //(-0,5 tot 2,5)		(-1 tot 2)
+						this.Y = Math.min(395,this.Y + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)+0.02*enemySize/3));    //(-0,5 tot 2,5)		(-1 tot 2)
 					} else {
-						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3-1-0.02));    //(-1,5 tot 1,5)		(-2 tot 1)
+						this.Y = Math.max(5,this.Y + Math.floor(Math.random()*3*enemySize/2.5-(3*enemySize/5-0.5)-0.02*enemySize/3));    //(-1,5 tot 1,5)		(-2 tot 1)
 					};
 				};	
 				this.lost = 0;
