@@ -307,10 +307,10 @@ function initCanvas(){
 	};
 	
 	function upgradePixelClick() {
-		if (pixelNumber > 100 && pixelPerClick < player.S) {
-			pixelPerClick = pixelPerClick + 1;
+		if (pixelNumber > 200 && pixelPerClick < player.S) {
+			pixelPerClick = pixelPerClick + 2;
 			document.getElementById('pixelperclick').innerHTML = pixelPerClick;
-			pixelNumber = pixelNumber - 100;
+			pixelNumber = pixelNumber - 200;
 			document.getElementById('pixelsnumber').innerHTML = pixelNumber;
 		};
 	};
