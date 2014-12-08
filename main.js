@@ -2,7 +2,7 @@
 	var pixelPerClick = 10;
 	var pixelPerTick = 1;
 	var pixelSize = 2;
-	var enemySize = 2.5;
+	var enemySize = 1;
 	var enter = false;
 	var canoffset;
 	
