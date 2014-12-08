@@ -1,5 +1,5 @@
 	var pixelNumber = 0;
-	var pixelPerClick = 5;
+	var pixelPerClick = 10;
 	var pixelPerTick = 1;
 	var pixelSize = 2;
 	var enemySize = 2.5;
@@ -141,7 +141,7 @@
 	var enemy1 = new sprayObj(333,333,50,5,'rgb(0,255,255)',50,150);						//(X,Y,Density,spread,color)
 	var enemy2 = new sprayObj(590,390,50,5,'rgb(0,0,255)',350,250);							// temporary stuff
 	var enemy3 = new sprayObj(490,60,50,5,'rgb(0,255,0)',150,50);
-	var player = new sprayObj(30,30,2,10,'rgb(255,0,0)',30,30);
+	var player = new sprayObj(30,30,10,20,'rgb(255,0,0)',30,30);
 	enemy1.start(enemy1.X,enemy1.Y,enemy1.C);
 	enemy2.start(enemy2.X,enemy2.Y,enemy2.C);
 	enemy3.start(enemy3.X,enemy3.Y,enemy3.C);
